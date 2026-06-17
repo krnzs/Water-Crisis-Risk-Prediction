@@ -17,10 +17,9 @@ def predict():
     population = float(request.form['population'])
     groundwater = float(request.form['groundwater'])
 
-    prediction = model.predict(
-        [[rainfall, population, groundwater]]
-    )
-
+ prediction = model.predict(
+    [[groundwater]]
+)
     if prediction[0] == 1:
         result = "⚠️ High Water Crisis Risk"
     else:
