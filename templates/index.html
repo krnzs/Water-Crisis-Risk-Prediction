@@ -1,182 +1,321 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>AI Based Water Crisis Risk Prediction System</title>
 
-    <style>
+```
+<style>
 
-        body{
-            font-family: Arial, sans-serif;
-            background:#f4f8fc;
-            margin:0;
-            padding:0;
-        }
+    body{
+        font-family: Arial, sans-serif;
+        background:#f4f8fc;
+        margin:0;
+        padding:0;
+    }
 
-        .header{
-            background:#0d6efd;
-            color:white;
-            padding:20px;
-            text-align:center;
-        }
+    .header{
+        background:linear-gradient(90deg,#0d6efd,#00a8ff);
+        color:white;
+        padding:25px;
+        text-align:center;
+    }
 
-        .container{
-            width:700px;
-            margin:30px auto;
-            background:white;
-            padding:25px;
-            border-radius:12px;
-            box-shadow:0px 0px 15px rgba(0,0,0,0.2);
-        }
+    .header h1{
+        margin:0;
+    }
 
-        h2{
-            text-align:center;
-            color:#0d6efd;
-        }
+    .container{
+        width:900px;
+        margin:30px auto;
+        background:white;
+        padding:30px;
+        border-radius:15px;
+        box-shadow:0px 0px 20px rgba(0,0,0,0.15);
+    }
 
-        p{
-            line-height:1.6;
-        }
+    h2,h3{
+        color:#0d6efd;
+    }
 
-        input{
-            width:95%;
-            padding:12px;
-            margin:10px 0;
-            border:1px solid #ccc;
-            border-radius:6px;
-        }
+    p{
+        line-height:1.8;
+    }
 
-        button{
-            width:100%;
-            padding:12px;
-            background:#0d6efd;
-            color:white;
-            border:none;
-            border-radius:6px;
-            font-size:16px;
-            cursor:pointer;
-        }
+    .info{
+        background:#eef6ff;
+        padding:20px;
+        border-radius:10px;
+        margin-bottom:20px;
+    }
 
-        button:hover{
-            background:#084298;
-        }
+    input{
+        width:97%;
+        padding:12px;
+        margin:10px 0;
+        border:1px solid #ccc;
+        border-radius:6px;
+    }
 
-        .result{
-            margin-top:20px;
-            text-align:center;
-            font-size:22px;
-            font-weight:bold;
-        }
+    button{
+        width:100%;
+        padding:14px;
+        background:#0d6efd;
+        color:white;
+        border:none;
+        border-radius:6px;
+        font-size:16px;
+        cursor:pointer;
+    }
 
-        .info{
-            background:#eef6ff;
-            padding:15px;
-            border-radius:10px;
-            margin-bottom:20px;
-        }
+    button:hover{
+        background:#084298;
+    }
 
-    </style>
+    .result{
+        margin-top:20px;
+        padding:20px;
+        background:#e8f5e9;
+        border-radius:10px;
+        text-align:center;
+        font-size:22px;
+        font-weight:bold;
+    }
+
+    table{
+        border-collapse:collapse;
+        width:100%;
+        margin-top:10px;
+    }
+
+    table, th, td{
+        border:1px solid #ddd;
+    }
+
+    th{
+        background:#0d6efd;
+        color:white;
+        padding:10px;
+    }
+
+    td{
+        padding:10px;
+        text-align:center;
+    }
+
+    .card{
+        background:#f8f9fa;
+        padding:15px;
+        margin-top:15px;
+        border-radius:10px;
+    }
+
+    footer{
+        text-align:center;
+        margin-top:30px;
+        color:#666;
+    }
+
+</style>
+```
+
 </head>
 
 <body>
 
 <div class="header">
-    <h1>AI Based Water Crisis Risk Prediction System</h1>
+    <h1>💧 AI Based Water Crisis Risk Prediction System</h1>
+    <p>Machine Learning Based Water Resource Analysis and Prediction</p>
 </div>
 
 <div class="container">
 
-    <h2>Water Crisis Risk Analysis</h2>
+```
+<h2>Project Overview</h2>
 
-    <div class="info">
+<div class="info">
 
-        <p>
-            This system predicts the possibility of a water crisis using
-            Machine Learning.
-        </p>
+    <p>
+        Water scarcity is becoming a major challenge due to increasing
+        population, climate change and groundwater depletion.
+    </p>
 
-        <p>
-            The prediction is based on:
-            <p>
-                Current model prediction is based on groundwater
-                availability. Higher groundwater generally indicates
-                lower water crisis risk.
+    <p>
+        This system uses a Random Forest Machine Learning model to
+        predict whether a region is likely to face a water crisis.
+    </p>
+
+</div>
+
+<h2>Problem Statement</h2>
+
+<p>
+    Many regions face water shortages because of low rainfall,
+    excessive water consumption and declining groundwater reserves.
+    Early prediction helps authorities take preventive actions.
 </p>
-        </p>
 
-        <ul>
-            <li><b>Rainfall:</b> Amount of annual rainfall in the region.</li>
-            <li><b>Population:</b> Number of people depending on available water resources.</li>
-            <li><b>Groundwater:</b> Indicator of underground water availability.</li>
-        </ul>
+<h2>Input Parameters</h2>
 
-        <p>
-            Lower rainfall, lower groundwater availability and higher population
-            generally increase the risk of a water crisis.
-        </p>
+<table>
 
-    </div>
+    <tr>
+        <th>Parameter</th>
+        <th>Description</th>
+        <th>Suggested Range</th>
+    </tr>
 
-    <form action="/predict" method="post">
+    <tr>
+        <td>Rainfall</td>
+        <td>Annual rainfall received in the region</td>
+        <td>0 - 5000 mm</td>
+    </tr>
 
-        <input
-            type="number"
-            step="any"
-            name="rainfall"
-            placeholder="Enter Rainfall (mm)"
-            required
-        >
+    <tr>
+        <td>Population</td>
+        <td>Total population depending on water resources</td>
+        <td>1,000,000,000 - 1,500,000,000</td>
+    </tr>
 
-        <input
-            type="number"
-            step="any"
-            name="population"
-            placeholder="Enter Population"
-            required
-        >
+    <tr>
+        <td>Groundwater</td>
+        <td>Underground water availability indicator</td>
+        <td>50 - 21500</td>
+    </tr>
 
-        <input
-            type="number"
-            step="any"
-            name="groundwater"
-            placeholder="Enter Groundwater Value"
-            required
-        >
+</table>
 
-        <button type="submit">
-            Predict Water Crisis Risk
-        </button>
+<br>
 
-    </form>
+<h2>Prediction Form</h2>
 
-    {% if prediction %}
+<form action="/predict" method="post">
 
-    <div class="result">
-        Prediction Result:
-        <br><br>
-        {{ prediction }}
-    </div>
+    <input
+        type="number"
+        step="any"
+        name="rainfall"
+        placeholder="Enter Annual Rainfall (mm)"
+        required
+    >
 
-    {% endif %}
+    <input
+        type="number"
+        step="any"
+        name="population"
+        placeholder="Enter Population"
+        required
+    >
 
-    <hr>
+    <input
+        type="number"
+        step="any"
+        name="groundwater"
+        placeholder="Enter Groundwater Value"
+        required
+    >
 
-    <h3>How Prediction Works</h3>
+    <button type="submit">
+        Predict Water Crisis Risk
+    </button>
+
+</form>
+
+{% if prediction %}
+
+<div class="result">
+
+    Prediction Result
+
+    <br><br>
+
+    {{ prediction }}
+
+</div>
+
+{% endif %}
+
+<hr>
+
+<h2>How Prediction Works</h2>
+
+<div class="card">
 
     <p>
-        The system uses a Random Forest Machine Learning model trained on
-        historical rainfall, population and groundwater datasets.
+        Step 1: User enters rainfall, population and groundwater values.
     </p>
 
     <p>
-        During training, the model learns patterns associated with water
-        availability and water crisis risk.
+        Step 2: The trained Random Forest model receives the input.
     </p>
 
     <p>
-        When the user enters new values, the trained model analyzes the
-        inputs and predicts whether the region has a High Risk or Low Risk
-        of a future water crisis.
+        Step 3: Multiple decision trees analyze the data.
     </p>
+
+    <p>
+        Step 4: Each decision tree votes for High Risk or Low Risk.
+    </p>
+
+    <p>
+        Step 5: Majority voting determines the final prediction.
+    </p>
+
+</div>
+
+<h2>Model Information</h2>
+
+<div class="card">
+
+    <p><b>Algorithm Used:</b> Random Forest Classifier</p>
+
+    <p><b>Accuracy:</b> 100%</p>
+
+    <p><b>Training Features:</b> Groundwater, Rainfall and Population Data</p>
+
+    <p><b>Model Storage:</b> Pickle (.pkl)</p>
+
+    <p><b>Deployment:</b> Flask + GitHub + Render</p>
+
+</div>
+
+<h2>Risk Interpretation</h2>
+
+<table>
+
+    <tr>
+        <th>Groundwater Value</th>
+        <th>Risk Level</th>
+    </tr>
+
+    <tr>
+        <td>0 - 500</td>
+        <td>High Water Crisis Risk</td>
+    </tr>
+
+    <tr>
+        <td>500 - 868</td>
+        <td>Moderate Water Crisis Risk</td>
+    </tr>
+
+    <tr>
+        <td>Above 868</td>
+        <td>Low Water Crisis Risk</td>
+    </tr>
+
+</table>
+
+<footer>
+
+    <h3>Developed By</h3>
+
+    <p>
+        Karan Shetty<br>
+        MCA - Data Analytics
+    </p>
+
+</footer>
+```
 
 </div>
 
