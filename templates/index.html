@@ -1,80 +1,177 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AI Based Water Crisis Risk Prediction</title>
+    <title>AI Based Water Crisis Risk Prediction System</title>
 
     <style>
+
         body{
             font-family: Arial, sans-serif;
+            background:#f4f8fc;
+            margin:0;
+            padding:0;
+        }
+
+        .header{
+            background:#0d6efd;
+            color:white;
+            padding:20px;
             text-align:center;
-            margin-top:50px;
-            background:#f4f4f4;
         }
 
         .container{
-            width:400px;
-            margin:auto;
-            padding:20px;
+            width:700px;
+            margin:30px auto;
             background:white;
-            border-radius:10px;
-            box-shadow:0 0 10px gray;
+            padding:25px;
+            border-radius:12px;
+            box-shadow:0px 0px 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+            color:#0d6efd;
+        }
+
+        p{
+            line-height:1.6;
         }
 
         input{
-            width:90%;
-            padding:10px;
-            margin:10px;
+            width:95%;
+            padding:12px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:6px;
         }
 
         button{
-            padding:10px 20px;
-            background:green;
+            width:100%;
+            padding:12px;
+            background:#0d6efd;
             color:white;
             border:none;
+            border-radius:6px;
+            font-size:16px;
             cursor:pointer;
         }
 
-        h3{
-            color:blue;
+        button:hover{
+            background:#084298;
         }
+
+        .result{
+            margin-top:20px;
+            text-align:center;
+            font-size:22px;
+            font-weight:bold;
+        }
+
+        .info{
+            background:#eef6ff;
+            padding:15px;
+            border-radius:10px;
+            margin-bottom:20px;
+        }
+
     </style>
 </head>
 
 <body>
 
+<div class="header">
+    <h1>AI Based Water Crisis Risk Prediction System</h1>
+</div>
+
 <div class="container">
 
-<h2>AI Based Water Crisis Risk Prediction System</h2>
+    <h2>Water Crisis Risk Analysis</h2>
 
-<form action="/predict" method="post">
+    <div class="info">
 
-    <input type="number"
-           step="any"
-           name="rainfall"
-           placeholder="Enter Rainfall"
-           required>
+        <p>
+            This system predicts the possibility of a water crisis using
+            Machine Learning.
+        </p>
 
-    <input type="number"
-           step="any"
-           name="population"
-           placeholder="Enter Population"
-           required>
+        <p>
+            The prediction is based on:
+        </p>
 
-    <input type="number"
-           step="any"
-           name="groundwater"
-           placeholder="Enter Groundwater"
-           required>
+        <ul>
+            <li><b>Rainfall:</b> Amount of annual rainfall in the region.</li>
+            <li><b>Population:</b> Number of people depending on available water resources.</li>
+            <li><b>Groundwater:</b> Indicator of underground water availability.</li>
+        </ul>
 
-    <button type="submit">
-        Predict
-    </button>
+        <p>
+            Lower rainfall, lower groundwater availability and higher population
+            generally increase the risk of a water crisis.
+        </p>
 
-</form>
+    </div>
 
-{% if prediction %}
-<h3>{{ prediction }}</h3>
-{% endif %}
+    <form action="/predict" method="post">
+
+        <input
+            type="number"
+            step="any"
+            name="rainfall"
+            placeholder="Enter Rainfall (mm)"
+            required
+        >
+
+        <input
+            type="number"
+            step="any"
+            name="population"
+            placeholder="Enter Population"
+            required
+        >
+
+        <input
+            type="number"
+            step="any"
+            name="groundwater"
+            placeholder="Enter Groundwater Value"
+            required
+        >
+
+        <button type="submit">
+            Predict Water Crisis Risk
+        </button>
+
+    </form>
+
+    {% if prediction %}
+
+    <div class="result">
+        Prediction Result:
+        <br><br>
+        {{ prediction }}
+    </div>
+
+    {% endif %}
+
+    <hr>
+
+    <h3>How Prediction Works</h3>
+
+    <p>
+        The system uses a Random Forest Machine Learning model trained on
+        historical rainfall, population and groundwater datasets.
+    </p>
+
+    <p>
+        During training, the model learns patterns associated with water
+        availability and water crisis risk.
+    </p>
+
+    <p>
+        When the user enters new values, the trained model analyzes the
+        inputs and predicts whether the region has a High Risk or Low Risk
+        of a future water crisis.
+    </p>
 
 </div>
 
