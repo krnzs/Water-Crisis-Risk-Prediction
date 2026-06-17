@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import pickle
-import numpy as np
+import os
 
 app = Flask(__name__)
 
@@ -22,14 +22,17 @@ def predict():
     )
 
     if prediction[0] == 1:
-        result = "High Water Crisis Risk"
+        result = "⚠️ High Water Crisis Risk"
     else:
-        result = "Low Water Crisis Risk"
+        result = "✅ Low Water Crisis Risk"
 
     return render_template(
         'index.html',
         prediction=result
     )
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000))
+    )
