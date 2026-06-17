@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import pickle
 
-app = Flask(**name**)
+app = Flask(__name__)
 
 model = pickle.load(open('water_crisis_model.pkl', 'rb'))
 
