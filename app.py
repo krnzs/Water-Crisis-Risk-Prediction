@@ -3,6 +3,8 @@ import pickle
 
 app = Flask(name)
 
+
+
 model = pickle.load(open('water_crisis_model.pkl', 'rb'))
 
 @app.route('/')
@@ -12,9 +14,11 @@ return render_template('index.html')
 @app.route('/predict', methods=['POST'])
 def predict():
 
+
 rainfall = float(request.form['rainfall'])
 population = float(request.form['population'])
 groundwater = float(request.form['groundwater'])
+
 
 prediction = model.predict([[groundwater]])
 
@@ -27,6 +31,7 @@ return render_template(
     'index.html',
     prediction=result
 )
+
 
 if name == "main":
 app.run(debug=True)
