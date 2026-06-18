@@ -1,321 +1,123 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <title>AI Based Water Crisis Risk Prediction System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Based Water Crisis Risk Prediction</title>
 
-```
-<style>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family:Arial, Helvetica, sans-serif;
+            background:#eaf4fc;
+        }
 
-    body{
-        font-family: Arial, sans-serif;
-        background:#f4f8fc;
-        margin:0;
-        padding:0;
-    }
+        .container{
+            width:420px;
+            margin:60px auto;
+            background:white;
+            padding:30px;
+            border-radius:12px;
+            box-shadow:0 0 15px rgba(0,0,0,0.2);
+        }
 
-    .header{
-        background:linear-gradient(90deg,#0d6efd,#00a8ff);
-        color:white;
-        padding:25px;
-        text-align:center;
-    }
+        h1{
+            text-align:center;
+            color:#0077b6;
+            margin-bottom:25px;
+        }
 
-    .header h1{
-        margin:0;
-    }
+        label{
+            font-weight:bold;
+            display:block;
+            margin-top:15px;
+        }
 
-    .container{
-        width:900px;
-        margin:30px auto;
-        background:white;
-        padding:30px;
-        border-radius:15px;
-        box-shadow:0px 0px 20px rgba(0,0,0,0.15);
-    }
+        input{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            border-radius:6px;
+            border:1px solid #ccc;
+            font-size:16px;
+            box-sizing:border-box;
+        }
 
-    h2,h3{
-        color:#0d6efd;
-    }
+        button{
+            width:100%;
+            margin-top:25px;
+            padding:12px;
+            background:#0077b6;
+            color:white;
+            border:none;
+            border-radius:6px;
+            font-size:17px;
+            cursor:pointer;
+        }
 
-    p{
-        line-height:1.8;
-    }
+        button:hover{
+            background:#005f8d;
+        }
 
-    .info{
-        background:#eef6ff;
-        padding:20px;
-        border-radius:10px;
-        margin-bottom:20px;
-    }
-
-    input{
-        width:97%;
-        padding:12px;
-        margin:10px 0;
-        border:1px solid #ccc;
-        border-radius:6px;
-    }
-
-    button{
-        width:100%;
-        padding:14px;
-        background:#0d6efd;
-        color:white;
-        border:none;
-        border-radius:6px;
-        font-size:16px;
-        cursor:pointer;
-    }
-
-    button:hover{
-        background:#084298;
-    }
-
-    .result{
-        margin-top:20px;
-        padding:20px;
-        background:#e8f5e9;
-        border-radius:10px;
-        text-align:center;
-        font-size:22px;
-        font-weight:bold;
-    }
-
-    table{
-        border-collapse:collapse;
-        width:100%;
-        margin-top:10px;
-    }
-
-    table, th, td{
-        border:1px solid #ddd;
-    }
-
-    th{
-        background:#0d6efd;
-        color:white;
-        padding:10px;
-    }
-
-    td{
-        padding:10px;
-        text-align:center;
-    }
-
-    .card{
-        background:#f8f9fa;
-        padding:15px;
-        margin-top:15px;
-        border-radius:10px;
-    }
-
-    footer{
-        text-align:center;
-        margin-top:30px;
-        color:#666;
-    }
-
-</style>
-```
+        .result{
+            margin-top:20px;
+            text-align:center;
+            font-size:20px;
+            font-weight:bold;
+            color:green;
+        }
+    </style>
 
 </head>
 
 <body>
 
-<div class="header">
-    <h1>💧 AI Based Water Crisis Risk Prediction System</h1>
-    <p>Machine Learning Based Water Resource Analysis and Prediction</p>
-</div>
-
 <div class="container">
 
-```
-<h2>Project Overview</h2>
+    <h1>AI Based Water Crisis Risk Prediction</h1>
 
-<div class="info">
+    <form action="/predict" method="POST">
 
-    <p>
-        Water scarcity is becoming a major challenge due to increasing
-        population, climate change and groundwater depletion.
-    </p>
+        <label>Rainfall (mm)</label>
+        <input
+            type="number"
+            name="rainfall"
+            placeholder="Enter Rainfall"
+            min="0"
+            step="0.01"
+            required
+        >
 
-    <p>
-        This system uses a Random Forest Machine Learning model to
-        predict whether a region is likely to face a water crisis.
-    </p>
+        <label>Population</label>
+        <input
+            type="number"
+            name="population"
+            placeholder="Enter Population"
+            min="0"
+            step="1"
+            required
+        >
 
-</div>
+        <label>Groundwater Level</label>
+        <input
+            type="number"
+            name="groundwater"
+            placeholder="Enter Groundwater Level"
+            min="0"
+            step="0.01"
+            required
+        >
 
-<h2>Problem Statement</h2>
+        <button type="submit">Predict Risk</button>
 
-<p>
-    Many regions face water shortages because of low rainfall,
-    excessive water consumption and declining groundwater reserves.
-    Early prediction helps authorities take preventive actions.
-</p>
+    </form>
 
-<h2>Input Parameters</h2>
-
-<table>
-
-    <tr>
-        <th>Parameter</th>
-        <th>Description</th>
-        <th>Suggested Range</th>
-    </tr>
-
-    <tr>
-        <td>Rainfall</td>
-        <td>Annual rainfall received in the region</td>
-        <td>0 - 5000 mm</td>
-    </tr>
-
-    <tr>
-        <td>Population</td>
-        <td>Total population depending on water resources</td>
-        <td>1,000,000,000 - 1,500,000,000</td>
-    </tr>
-
-    <tr>
-        <td>Groundwater</td>
-        <td>Underground water availability indicator</td>
-        <td>50 - 21500</td>
-    </tr>
-
-</table>
-
-<br>
-
-<h2>Prediction Form</h2>
-
-<form action="/predict" method="post">
-
-    <input
-        type="number"
-        step="any"
-        name="rainfall"
-        placeholder="Enter Annual Rainfall (mm)"
-        required
-    >
-
-    <input
-        type="number"
-        step="any"
-        name="population"
-        placeholder="Enter Population"
-        required
-    >
-
-    <input
-        type="number"
-        step="any"
-        name="groundwater"
-        placeholder="Enter Groundwater Value"
-        required
-    >
-
-    <button type="submit">
-        Predict Water Crisis Risk
-    </button>
-
-</form>
-
-{% if prediction %}
-
-<div class="result">
-
-    Prediction Result
-
-    <br><br>
-
-    {{ prediction }}
-
-</div>
-
-{% endif %}
-
-<hr>
-
-<h2>How Prediction Works</h2>
-
-<div class="card">
-
-    <p>
-        Step 1: User enters rainfall, population and groundwater values.
-    </p>
-
-    <p>
-        Step 2: The trained Random Forest model receives the input.
-    </p>
-
-    <p>
-        Step 3: Multiple decision trees analyze the data.
-    </p>
-
-    <p>
-        Step 4: Each decision tree votes for High Risk or Low Risk.
-    </p>
-
-    <p>
-        Step 5: Majority voting determines the final prediction.
-    </p>
-
-</div>
-
-<h2>Model Information</h2>
-
-<div class="card">
-
-    <p><b>Algorithm Used:</b> Random Forest Classifier</p>
-
-    <p><b>Accuracy:</b> 100%</p>
-
-    <p><b>Training Features:</b> Groundwater, Rainfall and Population Data</p>
-
-    <p><b>Model Storage:</b> Pickle (.pkl)</p>
-
-    <p><b>Deployment:</b> Flask + GitHub + Render</p>
-
-</div>
-
-<h2>Risk Interpretation</h2>
-
-<table>
-
-    <tr>
-        <th>Groundwater Value</th>
-        <th>Risk Level</th>
-    </tr>
-
-    <tr>
-        <td>0 - 500</td>
-        <td>High Water Crisis Risk</td>
-    </tr>
-
-    <tr>
-        <td>500 - 868</td>
-        <td>Moderate Water Crisis Risk</td>
-    </tr>
-
-    <tr>
-        <td>Above 868</td>
-        <td>Low Water Crisis Risk</td>
-    </tr>
-
-</table>
-
-<footer>
-
-    <h3>Developed By</h3>
-
-    <p>
-        Karan Shetty<br>
-        MCA - Data Analytics
-    </p>
-
-</footer>
-```
+    {% if prediction %}
+    <div class="result">
+        {{ prediction }}
+    </div>
+    {% endif %}
 
 </div>
 
