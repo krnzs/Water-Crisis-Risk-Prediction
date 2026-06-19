@@ -2,9 +2,13 @@ from flask import Flask, render_template, request
 import pickle
 
 app = Flask(__name__)
-
 # Load trained model
 model = pickle.load(open('water_crisis_model.pkl', 'rb'))
+
+print("=" * 50)
+print("Features:", model.n_features_in_)
+print("Feature Names:", model.feature_names_in_)
+print("=" * 50)
 
 @app.route('/')
 def home():
